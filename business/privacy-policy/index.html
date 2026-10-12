@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Privacy Policy | MtaaniWeb</title>
+<meta name="description" content="How MtaaniWeb collects, uses and protects personal information.">
+<link rel="icon" href="https://res.cloudinary.com/hztm3zo8/image/upload/w_64,h_64,c_fill,q_auto,f_auto/v1782489344/20260611_134430_jn0ezd.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  try{ var t = localStorage.getItem('mtani-theme'); if(t) document.documentElement.setAttribute('data-theme', t); }catch(e){}
+</script>
+
+<style>
+/* MtaaniWeb public styles. Same tokens as the homepage and HQ. */
+:root{
+    --cyan:#38B6FF; --purple:#9B59B6;
+    --bg:#0D0B2B; --bg-glow:#1C1850;
+    --ink:#FFFFFF; --muted:#8E8AB0;
+    --line:#2B284F;
+    --card:rgba(255,255,255,0.04);
+    --card-hover:rgba(255,255,255,0.07);
+    --field:rgba(255,255,255,0.05);
+    --nav:rgba(13,11,43,0.88);
+    --btn-ink:#0A0820;
+    --display:'Plus Jakarta Sans','Inter',system-ui,sans-serif;
+  }
+  :root[data-theme="light"]{
+    --bg:#F4F3FB; --bg-glow:#E3E0F6;
+    --ink:#0D0B2B; --muted:#5E5A7D;
+    --line:#DAD7EC;
+    --card:rgba(255,255,255,0.8);
+    --card-hover:#FFFFFF;
+    --field:#FFFFFF;
+    --nav:rgba(244,243,251,0.92);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  /* One static gradient, same as the login page. No animation, no repaint cost. */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:radial-gradient(circle at 20% 15%, var(--bg-glow) 0%, var(--bg) 55%);
+  }
+  h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-0.03em;line-height:1.1;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+
+  /* Shared card style, taken from the login page */
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    transition:border-color .15s, background .15s;
+  }
+  a.card:hover{border-color:var(--cyan);background:var(--card-hover);}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:var(--nav);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-0.04em;}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .icon-btn{width:40px;height:40px;border-radius:100px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .15s;}
+  .icon-btn:hover{border-color:var(--cyan);}
+  .icon-btn svg{width:17px;height:17px;}
+  .menu-btn{height:40px;padding:0 18px;border-radius:100px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:600;font-size:0.88rem;cursor:pointer;font-family:inherit;transition:border-color .15s;}
+  .menu-btn:hover{border-color:var(--cyan);}
+
+  /* Menu overlay */
+  .menu-overlay{position:fixed;inset:0;z-index:100;background:var(--bg);padding:24px;overflow-y:auto;display:none;}
+  .menu-overlay.open{display:block;}
+  .menu-top{display:flex;justify-content:space-between;align-items:center;max-width:1160px;margin:0 auto 36px;height:40px;}
+  .menu-list{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;max-width:720px;margin:0 auto;}
+  @media (max-width:620px){.menu-list{grid-template-columns:1fr;}}
+  .menu-list a{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-0.03em;padding:14px 0;border-bottom:1px solid var(--line);transition:color .15s;}
+  .menu-list a:hover{color:var(--cyan);}
+
+  /* Hero */
+  .hero{padding:84px 0 60px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-size:0.78rem;letter-spacing:0.06em;color:var(--muted);margin-bottom:18px;}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.5rem);letter-spacing:-0.045em;line-height:1;max-width:13ch;}
+  .grad{background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+  .hero p.sub{margin-top:20px;font-size:1.1rem;color:var(--muted);max-width:46ch;}
+  .vibe-search{margin-top:34px;max-width:660px;padding:6px;display:flex;gap:6px;}
+  .vibe-search:focus-within{border-color:var(--cyan);}
+  .vibe-search input{flex:1;min-width:0;border:none;outline:none;background:transparent;padding:14px 16px;font-size:1rem;font-family:'Inter',sans-serif;color:var(--ink);}
+  .vibe-search input::placeholder{color:#5F5C86;}
+  .btn-grad{border:none;border-radius:12px;padding:0 24px;background:linear-gradient(90deg,var(--cyan),var(--purple));color:var(--btn-ink);font-weight:600;font-size:0.95rem;cursor:pointer;font-family:inherit;white-space:nowrap;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center;}
+  .chips .try{font-size:0.82rem;color:var(--muted);}
+  .chip{font-size:0.84rem;padding:7px 14px;border-radius:100px;border:1px solid var(--line);background:var(--card);cursor:pointer;color:var(--ink);font-family:inherit;transition:border-color .15s;}
+  .chip:hover{border-color:var(--cyan);}
+
+  /* Sections */
+  .section{padding:72px 0 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px;}
+  .section-head h2{font-size:clamp(1.6rem,3.6vw,2.4rem);}
+  .kick{display:block;font-size:0.74rem;letter-spacing:0.1em;color:var(--cyan);margin-bottom:8px;}
+  .see-all{font-size:0.88rem;color:var(--cyan);white-space:nowrap;}
+  .see-all:hover{text-decoration:underline;}
+
+  /* Right now */
+  .rail{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media (max-width:900px){.rail{grid-template-columns:1fr 1fr;}}
+  .period{padding:22px;}
+  .period .tl{display:flex;justify-content:space-between;align-items:center;font-size:0.76rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;}
+  .now-badge{display:none;font-size:0.64rem;padding:3px 9px;border-radius:100px;background:linear-gradient(90deg,var(--cyan),var(--purple));color:var(--btn-ink);letter-spacing:0.08em;font-weight:500;}
+  .period h3{font-size:1.2rem;margin:12px 0 14px;}
+  .period ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;}
+  .period li{font-size:0.8rem;padding:5px 11px;border-radius:100px;border:1px solid var(--line);color:var(--muted);}
+  .period.active{border-color:var(--cyan);}
+  .period.active .now-badge{display:inline-block;}
+  .period.active .tl{color:var(--cyan);}
+  .period.active li{color:var(--ink);}
+
+  /* Live and trending: empty state with a light skeleton shimmer */
+  .feed-panel{padding:26px;}
+  .feed-msg{margin-bottom:20px;}
+  .feed-msg strong{display:block;font-family:var(--display);font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;margin-bottom:4px;}
+  .feed-msg span{color:var(--muted);font-size:0.9rem;}
+  .ghost-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media (max-width:760px){.ghost-row{grid-template-columns:1fr;}.ghost-row .ghost:nth-child(n+2){display:none;}}
+  .ghost{border:1px solid var(--line);border-radius:16px;padding:14px;}
+  .sk{position:relative;overflow:hidden;border-radius:10px;background:var(--field);}
+  .sk::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(142,138,176,0.22),transparent);animation:sweep 1.9s infinite linear;}
+  @keyframes sweep{to{transform:translateX(100%);}}
+  .ghost .img{height:110px;margin-bottom:14px;}
+  .ghost .l{height:11px;margin-bottom:9px;}
+  .ghost .l.s{width:55%;margin-bottom:0;}
+
+  /* Move cards */
+  .movegrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  @media (max-width:980px){.movegrid{grid-template-columns:repeat(2,1fr);}.movegrid .move:last-child{grid-column:span 2;}}
+  .move{padding:22px 20px;display:block;}
+  .move .ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;border:1px solid var(--line);background:var(--field);}
+  .move .ico svg{width:20px;height:20px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .move h3{font-size:1.15rem;margin-bottom:6px;}
+  .move p{font-size:0.83rem;color:var(--muted);}
+
+  /* Weekend */
+  .weekend{padding:clamp(28px,5vw,48px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+  .weekend h2{font-size:clamp(1.6rem,4vw,2.4rem);max-width:16ch;}
+  .weekend p{margin-top:12px;color:var(--muted);max-width:40ch;}
+  .btn-link{display:inline-block;padding:13px 26px;border-radius:12px;background:linear-gradient(90deg,var(--cyan),var(--purple));color:var(--btn-ink);font-weight:600;font-size:0.92rem;white-space:nowrap;}
+
+  /* Areas */
+  .areas{display:flex;flex-wrap:wrap;gap:10px;}
+  .area-pill{padding:11px 20px;border-radius:100px;border:1px solid var(--line);background:var(--card);font-size:0.9rem;transition:border-color .15s;}
+  .area-pill:hover{border-color:var(--cyan);}
+  .area-pill.more{border-style:dashed;color:var(--muted);}
+
+  /* Categories */
+  .catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media (max-width:980px){.catgrid{grid-template-columns:repeat(2,1fr);}}
+  .cat{padding:22px 20px;display:block;}
+  .cat h3{font-size:1.1rem;margin-bottom:6px;}
+  .cat p{font-size:0.83rem;color:var(--muted);}
+
+  /* Essentials */
+  .ess{display:flex;flex-wrap:wrap;gap:10px;}
+  .ess span{padding:9px 18px;border-radius:100px;border:1px dashed var(--line);color:var(--muted);font-size:0.88rem;}
+
+  /* Footer */
+  footer{margin-top:90px;border-top:1px solid var(--line);padding:52px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:32px;margin-bottom:36px;}
+  @media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;}.foot-grid > div:first-child{grid-column:span 2;}}
+  .foot-grid h4{font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:700;font-family:'Inter',sans-serif;}
+  .foot-grid ul{list-style:none;}
+  .foot-grid li{margin-bottom:9px;font-size:0.9rem;}
+  .foot-grid li a:hover{color:var(--cyan);}
+  .flogo{font-family:var(--display);font-weight:800;font-size:1.4rem;letter-spacing:-0.04em;margin-bottom:8px;}
+  .ftag{color:var(--muted);max-width:26ch;font-size:0.9rem;}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.76rem;color:var(--muted);}
+
+  @media (prefers-reduced-motion:reduce){.sk::after{animation:none;}}
+
+/* ---- Shared page pieces for the public site ---- */
+img{max-width:100%;display:block;}
+.crumb{font-size:0.82rem;color:var(--muted);padding:22px 0 0;}
+.crumb a:hover{color:var(--cyan);}
+.pagehead{padding:26px 0 8px;}
+.pagehead h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-0.04em;}
+.pagehead .sub{color:var(--muted);margin-top:10px;max-width:56ch;}
+.page-main{padding-bottom:20px;min-height:60vh;}
+.updated{font-size:0.78rem;color:var(--muted);margin:10px 0 28px;}
+.lg-body{max-width:70ch;padding-bottom:30px;}
+.lg-body h2{font-size:1.15rem;margin:30px 0 10px;letter-spacing:-0.02em;}
+.lg-body p{color:var(--muted);margin-bottom:14px;font-size:0.97rem;}
+.lg-body ul{color:var(--muted);font-size:0.97rem;margin:0 0 14px 20px;}
+.lg-body li{margin-bottom:7px;}
+.lg-body a{color:var(--cyan);}
+.lg-body strong{color:var(--ink);}
+.empty-feed{border:1px dashed var(--line);border-radius:20px;padding:52px 24px;text-align:center;color:var(--muted);margin:24px 0 60px;}
+.empty-feed b{display:block;font-family:var(--display);font-weight:800;color:var(--ink);font-size:1.15rem;margin-bottom:6px;letter-spacing:-0.02em;}
+
+/* Business profile */
+.gallery{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;margin-top:18px;border-radius:20px;overflow:hidden;}
+.g-main,.g-side div{background:linear-gradient(135deg,var(--purple),var(--cyan));overflow:hidden;}
+.g-main{aspect-ratio:4/3;}
+.g-side{display:grid;grid-template-rows:1fr 1fr;gap:8px;}
+.g-side div{background:linear-gradient(135deg,#1C1850,var(--purple));}
+.gallery img{width:100%;height:100%;object-fit:cover;}
+.gallery.single{grid-template-columns:1fr;}
+.gallery.single .g-main{aspect-ratio:16/9;}
+@media (max-width:700px){.gallery{grid-template-columns:1fr;}.g-side{grid-template-columns:1fr 1fr;grid-template-rows:none;aspect-ratio:2/1;}}
+.biz-head{padding:28px 0 6px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-start;}
+.biz-head h1{font-size:clamp(1.9rem,5vw,2.8rem);margin-bottom:10px;}
+.biz-meta{font-size:0.95rem;color:var(--muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:0.76rem;font-weight:600;padding:5px 12px;border-radius:100px;border:1px solid var(--line);background:var(--card);}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);}
+.badge.verified{color:#3DD598;border-color:rgba(61,213,152,0.4);}
+.badge.verified::before{background:#3DD598;}
+.badge.featured::before{background:#F2B35A;}
+.badge.sponsored::before{background:var(--purple);}
+:root[data-theme="light"] .badge.verified{color:#17875F;}
+.counts{display:flex;gap:22px;}
+.counts .n{display:block;font-family:var(--display);font-weight:800;font-size:1.5rem;letter-spacing:-0.03em;color:var(--ink);}
+.counts div{font-size:0.78rem;color:var(--muted);text-align:right;}
+.open-line{margin:14px 0 18px;font-size:0.95rem;display:flex;align-items:center;gap:8px;}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block;}
+.dot.on{background:#3DD598;}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.act{padding:12px 22px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:0.92rem;font-weight:600;cursor:pointer;color:var(--ink);font-family:inherit;transition:border-color .15s;}
+.act:hover{border-color:var(--cyan);}
+.act.primary{border:none;background:linear-gradient(90deg,var(--cyan),var(--purple));color:var(--btn-ink);}
+.act.saved{border-color:var(--cyan);color:var(--cyan);}
+.act.ghost{border-style:dashed;color:var(--muted);font-weight:500;}
+.lead{padding:10px 0 30px;font-size:1.08rem;max-width:62ch;border-bottom:1px solid var(--line);}
+.vtags{display:flex;gap:8px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--line);}
+.vtag{font-size:0.82rem;padding:7px 15px;border-radius:100px;border:1px solid var(--line);background:var(--card);}
+.block{padding:32px 0;border-bottom:1px solid var(--line);}
+.block h2{font-size:1.25rem;margin-bottom:14px;}
+.block p{color:var(--muted);max-width:64ch;white-space:pre-line;}
+.plain{list-style:none;}
+.plain li{padding:10px 0;border-bottom:1px solid var(--line);font-size:0.96rem;}
+.plain li:last-child{border-bottom:none;}
+.happen{padding:18px 20px;display:block;margin-bottom:10px;}
+.happen .tag{font-size:0.74rem;color:var(--cyan);letter-spacing:0.08em;margin-bottom:4px;}
+.happen strong{font-family:var(--display);font-weight:800;letter-spacing:-0.02em;}
+.happen p{margin-top:4px;font-size:0.88rem;}
+.finds{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media (max-width:700px){.finds{grid-template-columns:1fr;}}
+.find{display:block;overflow:hidden;}
+.find .im{height:120px;background:linear-gradient(135deg,var(--purple),var(--cyan));}
+.find .im img{width:100%;height:100%;object-fit:cover;}
+.find .fb{padding:14px 16px;}
+.find h3{font-size:1rem;margin-bottom:4px;}
+.find p{font-size:0.8rem;color:var(--muted);}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media (max-width:700px){.info-grid{grid-template-columns:1fr;}}
+.info-grid h3{font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:'Inter',sans-serif;font-weight:700;}
+.info-grid p{font-size:0.95rem;}
+.info-grid a{color:var(--cyan);}
+.notice{padding:22px;margin:32px 0 20px;font-size:0.85rem;color:var(--muted);}
+.notice a.rep{color:var(--cyan);cursor:pointer;text-decoration:underline;}
+.reasons{display:none;margin-top:14px;}
+.reasons.open{display:block;}
+.reasons label{display:flex;align-items:center;gap:8px;margin-bottom:8px;color:var(--ink);}
+.reasons input[type=radio]{accent-color:var(--cyan);}
+.reasons textarea{width:100%;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--ink);font-family:inherit;margin:6px 0 10px;min-height:70px;}
+.reasons button{border:none;border-radius:12px;padding:10px 20px;background:linear-gradient(90deg,var(--cyan),var(--purple));color:var(--btn-ink);font-weight:600;cursor:pointer;font-family:inherit;}
+.skel{padding:40px 0;}
+
+</style>
+</head>
+<body>
+<main class="wrap page-main"><div class="crumb"><a href="/">MtaaniWeb</a> / Legal</div><div class="pagehead"><h1>Privacy Policy</h1></div><div class="updated mono">Last updated: 11 October 2026</div><div class="lg-body">
+<p>MtaaniWeb ("MtaaniWeb", "we", "us" or "our") provides a local discovery and media platform that helps people find businesses, places, events, experiences and things happening around them. This Privacy Policy explains how we collect, use, store, protect and disclose personal information, in line with the Data Protection Act, 2019 of Kenya.</p>
+<h2>1. Information we collect</h2>
+<p>Depending on how you use MtaaniWeb, we may collect your name, email address and phone number, business contact information, messages and enquiries, campaign information, technical information such as browser and device data, and information you choose to give us. We aim to collect only what is reasonably necessary.</p>
+<h2>2. How we use information</h2>
+<ul><li>Operate and maintain MtaaniWeb</li><li>Publish and manage business and event information</li><li>Respond to enquiries and manage campaigns</li><li>Understand how people use the Platform and improve discovery</li><li>Keep the Platform secure and prevent fraud or abuse</li><li>Meet legal and regulatory obligations</li></ul>
+<h2>3. Business information</h2>
+<p>Some business information is intended to be public on MtaaniWeb, including name, category, location, hours, contact details, website, social links, description, images and services. Business owners should not submit personal information for public display unless they are authorised to do so.</p>
+<h2>4. Location</h2>
+<p>MtaaniWeb does not require your location. Where you choose an area to browse, that choice stays in your browser.</p>
+<h2>5. Marketing</h2>
+<p>Where the law requires it, we get your consent before sending direct marketing. You can opt out at any time.</p>
+<h2>6. Service providers</h2>
+<p>We use trusted providers for hosting, data storage, media delivery, analytics and communications, under appropriate contractual and technical safeguards. These include Google Firebase for data storage and sign in, and Cloudinary for images.</p>
+<h2>7. Security</h2>
+<p>We use reasonable technical and organisational measures to protect personal information. No internet-based system can be guaranteed to be completely secure.</p>
+<h2>8. Your rights</h2>
+<p>Subject to the law, you may be informed about how your data is used, access it, object to certain processing, ask for correction and ask for deletion. Use our <a href="/data-request/">Data Request and Deletion Process</a> or the <a href="/contact/">Contact page</a>.</p>
+<h2>9. Children</h2>
+<p>MtaaniWeb is not designed to collect personal information from children, and we take appropriate steps where Kenyan law applies.</p>
+<h2>10. Changes</h2>
+<p>We may update this Privacy Policy from time to time. The latest version is published on this page with its date.</p>
+</div></main>
+
+<script type="module">
+import{initializeApp as p}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";import{getFirestore as h}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";import{getAuth as g}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";var y={apiKey:"AIzaSyDDrioC1IWzavH7CQJlPQhXGQjVBG7rH7Y",authDomain:"mtaaniwebhq.firebaseapp.com",projectId:"mtaaniwebhq",storageBucket:"mtaaniwebhq.firebasestorage.app",messagingSenderId:"307779110425",appId:"1:307779110425:web:cb16de61ca96f56ed7cc88"};var s=p(y),c=h(s),L=g(s);import{doc as v,updateDoc as w,setDoc as x,increment as k}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";var N=[6,9,12,15,18,21,0,3].map(e=>({id:String(e),hour:e,label:b(e)}));function b(e){let t=e>=12?"PM":"AM";return(e%12||12)+":00 "+t}function u(e,t){t=t||new Date;let n=new Intl.DateTimeFormat("en-GB",{timeZone:e,weekday:"short",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(t),o={};n.forEach(a=>{o[a.type]=a.value});let r=parseInt(o.hour,10)%24,i=parseInt(o.minute,10);return{dayKey:String(o.weekday).slice(0,3).toLowerCase(),hour:r,minute:i,minutes:r*60+i,date:o.year+"-"+o.month+"-"+o.day}}async function S(){try{let e="mtani-v:"+location.pathname;if(sessionStorage.getItem(e))return;sessionStorage.setItem(e,"1");let t=u("Africa/Nairobi").date,n=v(c,"stats",t);try{await w(n,{views:k(1)})}catch{await x(n,{views:1,day:t})}}catch{}}S();var A=[["Discover","/discover/"],["Categories","/category/"],["Areas","/area/"],["Events","/events/"],["Mtaani Picks","/picks/"],["Guides","/guides/"],["Trending","/trending/"],["This Weekend","/this-weekend/"],["Mtaa Yangu","/mtaa-yangu/"],["About MtaaniWeb","/about/"],["For Businesses","/for-businesses/"]],M=`
+<nav><div class="wrap">
+  <a href="/" class="logo">MtaaniWeb</a>
+  <div class="nav-right">
+    <a class="icon-btn" href="/search/" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
+    <button class="icon-btn" id="themeToggle" aria-label="Switch between dark and light mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="menu-btn" id="menuOpen">Menu</button>
+  </div>
+</div></nav>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-top"><a href="/" class="logo">MtaaniWeb</a>
+    <button class="icon-btn" id="menuClose" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button></div>
+  <div class="menu-list">${A.map(e=>`<a href="${e[1]}">${e[0]}</a>`).join("")}</div>
+</div>`,T=`
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div><div class="flogo">MtaaniWeb</div><div class="ftag">Discover what's happening around mtaa yako.</div></div>
+    <div><h4>Discover</h4><ul><li><a href="/category/">Categories</a></li><li><a href="/area/">Areas</a></li><li><a href="/events/">Events</a></li><li><a href="/picks/">Mtaani Picks</a></li><li><a href="/guides/">Guides</a></li><li><a href="/trending/">Trending</a></li></ul></div>
+    <div><h4>For Businesses</h4><ul><li><a href="/for-businesses/list/">List Your Business</a></li><li><a href="/for-businesses/promote/">Promote Your Business</a></li><li><a href="/for-businesses/campaigns/">Campaigns</a></li><li><a href="/contact/">Business Enquiries</a></li></ul></div>
+    <div><h4>MtaaniWeb</h4><ul><li><a href="/about/">About MtaaniWeb</a></li><li><a href="/contact/">Contact</a></li><li><a href="/portfolio/">Portfolio</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="/terms-of-use/">Terms of Use</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/business-terms/">Business Terms</a></li><li><a href="/campaign-terms/">Campaign Terms</a></li><li><a href="/content-guidelines/">Content Guidelines</a></li><li><a href="/advertising-policy/">Advertising Policy</a></li><li><a href="/cookie-policy/">Cookie Policy</a></li><li><a href="/data-request/">Data Requests</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>\xA9 2026 MtaaniWeb. All rights reserved.</span><span class="mono">Nairobi, Kenya</span></div>
+</div></footer>`,d=document.querySelector("main")||document.body.firstElementChild;d.insertAdjacentHTML("beforebegin",M);d.insertAdjacentHTML("afterend",T);var l=document.documentElement;document.getElementById("themeToggle").addEventListener("click",()=>{let e=l.getAttribute("data-theme")==="dark"?"light":"dark";l.setAttribute("data-theme",e);try{localStorage.setItem("mtani-theme",e)}catch{}});var m=document.getElementById("menuOverlay"),D=()=>{m.classList.add("open"),document.body.style.overflow="hidden"},f=()=>{m.classList.remove("open"),document.body.style.overflow=""};document.getElementById("menuOpen").addEventListener("click",D);document.getElementById("menuClose").addEventListener("click",f);document.addEventListener("keydown",e=>{e.key==="Escape"&&f()});
+
+</script>
+</body>
+</html>
