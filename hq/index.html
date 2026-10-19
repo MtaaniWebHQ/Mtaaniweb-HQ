@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
-  try{ var t = localStorage.getItem('mtani-theme'); if(t) document.documentElement.setAttribute('data-theme', t); }catch(e){}
+  try{ var t = localStorage.getItem('mtani-theme'); document.documentElement.setAttribute('data-theme', t || 'light'); }catch(e){}
 </script>
 
 
@@ -33,16 +33,14 @@
   --side-w:252px; --top-h:60px;
 }
 :root[data-theme="light"]{
-  --bg:#F4F3FB; --bg-glow:#E3E0F6;
-  --ink:#0D0B2B; --muted:#5E5A7D;
-  --line:#DAD7EC;
-  --card:rgba(255,255,255,0.85);
-  --card-hover:#FFFFFF;
-  --field:#FFFFFF;
-  --nav:rgba(244,243,251,0.94);
-  --side:rgba(250,249,254,0.98);
-  --ok:#17875F; --warn:#9A6209; --err:#C4304A;
-  --ok-bg:rgba(23,135,95,0.1); --warn-bg:rgba(154,98,9,0.1); --err-bg:rgba(196,48,74,0.1); --info-bg:rgba(30,130,200,0.1);
+  --bg:#202A36; --bg-glow:#2A3544;
+  --ink:#FFFBFF; --muted:#A7A3CA;
+  --line:rgba(255,255,255,0.1);
+  --card:#1A181B;
+  --card-hover:#232126;
+  --field:rgba(255,255,255,0.07);
+  --nav:rgba(30,38,48,0.94);
+  --side:rgba(26,32,41,0.98);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{-webkit-text-size-adjust:100%;}
@@ -81,7 +79,7 @@ button{font-family:inherit;}
 .pop svg{width:16px;height:16px;color:var(--muted);}
 
 /* Sidebar */
-.hq-side{position:fixed;top:var(--top-h);bottom:0;left:0;width:var(--side-w);background:var(--side);border-right:1px solid var(--line);overflow-y:auto;padding:18px 12px 12px;z-index:55;display:flex;flex-direction:column;transition:transform .2s;}
+.hq-side{position:fixed;top:var(--top-h);bottom:0;left:0;width:var(--side-w);background:var(--side);border-right:1px solid var(--line);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;will-change:transform;padding:18px 12px 12px;z-index:55;display:flex;flex-direction:column;transition:transform .2s;}
 .side-label{font-size:0.7rem;letter-spacing:0.12em;color:var(--cyan);padding:0 10px 14px;}
 .nav-group{margin-bottom:18px;}
 .nav-group h4{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:0 10px 6px;font-weight:700;font-family:'Inter',sans-serif;}
@@ -107,6 +105,7 @@ button{font-family:inherit;}
 @media (max-width:960px){
   .hq-side{transform:translateX(-100%);width:min(86vw,300px);}
   body.side-open .hq-side{transform:none;}
+  body.side-open{overflow:hidden;}
   body.side-open .hq-backdrop{display:block;}
   .hq-main{padding:20px 16px 80px;}
   .wordmark{font-size:1.1rem;}
@@ -156,7 +155,7 @@ select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.o
 select option{color:#0D0B2B;background:#fff;}
 textarea{min-height:96px;resize:vertical;}
 input::placeholder,textarea::placeholder{color:#5F5C86;}
-:root[data-theme="light"] input::placeholder,:root[data-theme="light"] textarea::placeholder{color:#9A97B8;}
+
 input:focus,select:focus,textarea:focus{border-color:var(--cyan);}
 input[type=checkbox],input[type=radio]{width:18px;height:18px;accent-color:var(--cyan);flex:none;}
 .check{display:flex;align-items:center;gap:10px;font-size:0.92rem;cursor:pointer;}
@@ -213,7 +212,7 @@ input[type=checkbox],input[type=radio]{width:18px;height:18px;accent-color:var(-
 .pill.err{background:var(--err-bg);color:var(--err);border-color:transparent;}
 .pill.info{background:var(--info-bg);color:var(--cyan);border-color:transparent;}
 .pill.purple{background:rgba(155,89,182,0.16);color:#C79AE0;border-color:transparent;}
-:root[data-theme="light"] .pill.purple{color:#7B3F96;}
+
 
 /* Empty states */
 .empty{border:1px dashed var(--line);border-radius:16px;padding:34px 20px;text-align:center;color:var(--muted);font-size:0.9rem;}
@@ -284,7 +283,7 @@ input[type=checkbox],input[type=radio]{width:18px;height:18px;accent-color:var(-
 .blk.now .t{color:var(--cyan);}
 
 /* ---- 1.1: glass overlays, inbox count, swipeable stat cards ---- */
-.hq-side{background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);}
+.hq-side{background:var(--side);}
 .pop{background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);}
 .find-ov{background:rgba(5,4,20,0.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
 .find-box{background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);}
@@ -365,7 +364,7 @@ input[type=checkbox],input[type=radio]{width:18px;height:18px;accent-color:var(-
 </div>
 
 <script type="module">
-import{initializeApp as f}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";import{getFirestore as h}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";import{getAuth as g}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";var w={apiKey:"AIzaSyDDrioC1IWzavH7CQJlPQhXGQjVBG7rH7Y",authDomain:"mtaaniwebhq.firebaseapp.com",projectId:"mtaaniwebhq",storageBucket:"mtaaniwebhq.firebasestorage.app",messagingSenderId:"307779110425",appId:"1:307779110425:web:cb16de61ca96f56ed7cc88"};var s="https://res.cloudinary.com/hztm3zo8/image/upload/v1782489344/20260611_134430_jn0ezd.jpg";var c=f(w),N=h(c),a=g(c);var M=[6,9,12,15,18,21,0,3].map(t=>({id:String(t),hour:t,label:y(t)}));function y(t){let o=t>=12?"PM":"AM";return(t%12||12)+":00 "+o}function x(t,o){return!t||t.indexOf("/upload/")===-1?t||"":t.replace("/upload/","/upload/"+o+"/")}function u(t){return x(s,"w_"+t+",h_"+t+",c_fill,q_auto,f_auto")}import{onAuthStateChanged as b,signInWithEmailAndPassword as S,sendPasswordResetEmail as k,setPersistence as L,browserLocalPersistence as D,browserSessionPersistence as E}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";var e=t=>document.querySelector(t);document.getElementById("content").hidden=!1;var d=e("#lgLogo"),I=e("#lgBrand");d.src=u(160);var l=()=>I.classList.add("logo-fail");d.addEventListener("error",l);window.addEventListener("offline",l);function n(t,o){let r=e("#msg");r.textContent=t,r.className="msg show "+o}function m(){e("#msg").className="msg"}new URLSearchParams(location.search).get("denied")&&n("This account does not have access to the management system.","err");b(a,t=>{t&&!new URLSearchParams(location.search).get("denied")&&location.replace("/hq/dashboard/")});var T=t=>({"auth/invalid-credential":"Incorrect email or password.","auth/wrong-password":"Incorrect email or password.","auth/user-not-found":"Incorrect email or password.","auth/invalid-email":"Enter a valid email address.","auth/too-many-requests":"Too many attempts. Wait a few minutes and try again.","auth/network-request-failed":"No connection. Check your internet and try again.","auth/user-disabled":"This account has been disabled."})[t]||"Something went wrong. Please try again.";e("#loginForm").addEventListener("submit",async t=>{t.preventDefault(),m();let o=e("#email").value.trim(),r=e("#password").value;if(!o||!r){n("Enter your email and password.","err");return}let i=e("#go");i.disabled=!0,i.textContent="Signing in...";try{await L(a,e("#remember").checked?D:E),await S(a,o,r),location.replace("/hq/dashboard/")}catch(p){n(T(p.code),"err"),i.disabled=!1,i.textContent="Sign in"}});e("#forgot").addEventListener("click",async()=>{m();let t=e("#email").value.trim();if(!t){n("Enter your email above first, then tap Forgot password.","err");return}try{await k(a,t),n("If an account exists for that email, a password reset link is on its way. Check your inbox.","ok")}catch(o){o.code==="auth/invalid-email"?n("Enter a valid email address.","err"):n("If an account exists for that email, a password reset link is on its way. Check your inbox.","ok")}});
+import{initializeApp as f}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";import{getFirestore as g}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";import{getAuth as y}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";var w={apiKey:"AIzaSyDDrioC1IWzavH7CQJlPQhXGQjVBG7rH7Y",authDomain:"mtaaniwebhq.firebaseapp.com",projectId:"mtaaniwebhq",storageBucket:"mtaaniwebhq.firebasestorage.app",messagingSenderId:"307779110425",appId:"1:307779110425:web:cb16de61ca96f56ed7cc88"};var s="https://res.cloudinary.com/hztm3zo8/image/upload/v1782489344/20260611_134430_jn0ezd.jpg";var l=f(w),I=g(l),a=y(l);var d={3:"Late Night / Early Hours",6:"Early Morning",9:"Late Morning",12:"Afternoon",15:"Late Afternoon",18:"Evening",21:"Night",0:"After Hours"},x={3:"3:00 to 5:59 AM",6:"6:00 to 8:59 AM",9:"9:00 to 11:59 AM",12:"12:00 to 2:59 PM",15:"3:00 to 5:59 PM",18:"6:00 to 8:59 PM",21:"9:00 to 11:59 PM",0:"12:00 to 2:59 AM"},O=[6,9,12,15,18,21,0,3].map(e=>({id:String(e),hour:e,name:d[e],range:x[e],label:d[e]+" ("+b(e)+")"}));function b(e){let n=e>=12?"PM":"AM";return(e%12||12)+":00 "+n}function k(e,n){return!e||e.indexOf("/upload/")===-1?e||"":e.replace("/upload/","/upload/"+n+"/")}function u(e){return k(s,"w_"+e+",h_"+e+",c_fill,q_auto,f_auto")}import{onAuthStateChanged as S,signInWithEmailAndPassword as A,sendPasswordResetEmail as v,setPersistence as M,browserLocalPersistence as L,browserSessionPersistence as N}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";var t=e=>document.querySelector(e);document.getElementById("content").hidden=!1;var c=t("#lgLogo"),D=t("#lgBrand");c.src=u(160);var h=()=>D.classList.add("logo-fail");c.addEventListener("error",h);window.addEventListener("offline",h);function o(e,n){let r=t("#msg");r.textContent=e,r.className="msg show "+n}function m(){t("#msg").className="msg"}new URLSearchParams(location.search).get("denied")&&o("This account does not have access to the management system.","err");S(a,e=>{e&&!new URLSearchParams(location.search).get("denied")&&location.replace("/hq/dashboard/")});var T=e=>({"auth/invalid-credential":"Incorrect email or password.","auth/wrong-password":"Incorrect email or password.","auth/user-not-found":"Incorrect email or password.","auth/invalid-email":"Enter a valid email address.","auth/too-many-requests":"Too many attempts. Wait a few minutes and try again.","auth/network-request-failed":"No connection. Check your internet and try again.","auth/user-disabled":"This account has been disabled."})[e]||"Something went wrong. Please try again.";t("#loginForm").addEventListener("submit",async e=>{e.preventDefault(),m();let n=t("#email").value.trim(),r=t("#password").value;if(!n||!r){o("Enter your email and password.","err");return}let i=t("#go");i.disabled=!0,i.textContent="Signing in...";try{await M(a,t("#remember").checked?L:N),await A(a,n,r),location.replace("/hq/dashboard/")}catch(p){o(T(p.code),"err"),i.disabled=!1,i.textContent="Sign in"}});t("#forgot").addEventListener("click",async()=>{m();let e=t("#email").value.trim();if(!e){o("Enter your email above first, then tap Forgot password.","err");return}try{await v(a,e),o("If an account exists for that email, a password reset link is on its way. Check your inbox.","ok")}catch(n){n.code==="auth/invalid-email"?o("Enter a valid email address.","err"):o("If an account exists for that email, a password reset link is on its way. Check your inbox.","ok")}});
 
 </script>
 <script>
